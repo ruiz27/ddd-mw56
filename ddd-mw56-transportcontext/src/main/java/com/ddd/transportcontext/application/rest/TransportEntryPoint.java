@@ -1,6 +1,8 @@
 package com.ddd.transportcontext.application.rest;
 
-//@RestController
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
 public class TransportEntryPoint {
 
 }
