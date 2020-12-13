@@ -5,7 +5,9 @@ import java.util.function.UnaryOperator;
 import com.ddd.example.fabriccontext.model.Box;
 import com.ddd.example.fabriccontext.service.ConveyorBeltService;
 import com.ddd.example.fabriccontext.service.FabricService;
+import com.ddd.example.fabriccontext.web.client.TransportClient;
 
+import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Mono;
 
 /**
@@ -14,6 +16,7 @@ import reactor.core.publisher.Mono;
  * @author sergio.ruiz
  *
  */
+@Slf4j
 public class FabricServiceImpl implements FabricService {
 
 	private UnaryOperator<Box> conveyorBelt1;
@@ -33,10 +36,23 @@ public class FabricServiceImpl implements FabricService {
 	 * @return
 	 */
 	public Mono<Box> processShipment(String request) {
+		
+		log.info("Request received");
+		
+		log.info("Box created");
 		Box box = new Box();
 		box.setName(request);
+		
+		log.info("Box in fabric");
 		conveyorBelt1.andThen(conveyorBelt2).andThen(conveyorBelt3).apply(box);
-		return null;
+		
+		log.info("Sending box");
+		TransportClient transportClient = new TransportClient();
+	    log.info(transportClient.getResult());
+		
+	    log.info("Box sended");
+		
+	    return null;
 	}
 
 }
