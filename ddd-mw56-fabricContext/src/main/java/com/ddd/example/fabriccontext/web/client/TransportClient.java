@@ -11,7 +11,7 @@ public class TransportClient {
 	private WebClient client = WebClient.create("http://localhost:8082");
 
 	@SuppressWarnings("deprecation")
-	private Mono<ClientResponse> result = client.get().uri("/hello").accept(MediaType.TEXT_PLAIN).exchange();
+	private Mono<ClientResponse> result = client.get().uri("/send").accept(MediaType.TEXT_PLAIN).exchange();
 
 	public String getResult() {
 		return ">> result = " + result.flatMap(res -> res.bodyToMono(String.class)).block();

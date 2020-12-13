@@ -19,6 +19,6 @@ public class FabricServiceImplTest {
 	@Test
 	public void when_RegisterElectronicCommerceTransaction_correct() {
 		FabricServiceImpl fac = new FabricServiceImpl();
-		fac.processShipment("Caja 1");
+		fac.processShipment("GIFT");
 	}
 }
