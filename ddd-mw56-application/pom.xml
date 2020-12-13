@@ -5,5 +5,5 @@
     <artifactId>ddd-mw56</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <artifactId>ddd-mw56-infrastructure</artifactId>
+  <artifactId>ddd-mw56-application</artifactId>
 </project>

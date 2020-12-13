@@ -20,5 +20,6 @@
 		<module>ddd-mw56-sharedkernel</module>
 		<module>ddd-mw56-infrastructure</module>
 		<module>ddd-mw56-main</module>
+		<module>ddd-mw56-application</module>
 	</modules>
 </project>
