@@ -2,6 +2,8 @@ package com.ddd.example.fabriccontext.service.impl;
 
 import java.util.function.UnaryOperator;
 
+import org.springframework.stereotype.Service;
+
 import com.ddd.example.fabriccontext.model.Box;
 import com.ddd.example.fabriccontext.service.ConveyorBeltService;
 import com.ddd.example.fabriccontext.service.FabricService;
@@ -17,6 +19,7 @@ import reactor.core.publisher.Mono;
  *
  */
 @Slf4j
+@Service
 public class FabricServiceImpl implements FabricService {
 
 	private UnaryOperator<Box> conveyorBelt1;
@@ -37,8 +40,7 @@ public class FabricServiceImpl implements FabricService {
 	 */
 	public Mono<Box> processShipment(String request) {
 		
-		log.info("Request received");
-		
+		log.info("Request received " + request);
 		log.info("Box created");
 		Box box = new Box(1,request);
 		Mono<Box> boxMono = Mono.just(box);
