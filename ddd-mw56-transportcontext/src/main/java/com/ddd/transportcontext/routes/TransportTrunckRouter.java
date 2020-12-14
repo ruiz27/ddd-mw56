@@ -16,7 +16,7 @@ public class TransportTrunckRouter {
 	@Bean
 	public RouterFunction<ServerResponse> route(TransportHandler greetingHandler) {
 		return RouterFunctions.route(
-				RequestPredicates.GET("/send").and(RequestPredicates.accept(MediaType.TEXT_PLAIN)),
+				RequestPredicates.POST("/send").and(RequestPredicates.accept(MediaType.TEXT_PLAIN)),
 				greetingHandler::hello);
 	}
 }

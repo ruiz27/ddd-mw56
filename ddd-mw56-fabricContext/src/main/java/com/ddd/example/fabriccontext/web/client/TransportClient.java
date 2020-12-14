@@ -7,11 +7,13 @@ import reactor.core.publisher.Mono;
 
 public class TransportClient {
 
-	@SuppressWarnings("deprecation")
-	public Mono<String> getResult() {
-		return WebClient.create("http://localhost:8082").get().uri("/send").accept(MediaType.TEXT_PLAIN).exchange()
-				.flatMap(res -> res.bodyToMono(String.class));
-
+	public Mono<String> sendResult(String present) {
+		return WebClient.create("http://localhost:8082")
+				.post()
+				.uri("/send")
+				.bodyValue(present)
+				.accept(MediaType.TEXT_PLAIN).retrieve()
+				.bodyToMono(String.class);
 	}
 
 }
