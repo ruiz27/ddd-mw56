@@ -49,9 +49,9 @@ public class FabricServiceImpl implements FabricService {
 		
 		log.info("\n Request received " + request);
 		requestRepository.save(Request.builder().name(request).build());
-		log.info("\n Box created");
 		Box box = new Box(1,request);
 		Mono<Box> boxMono = Mono.just(box);
+		log.info("\n Box created");
 		
 		log.info("Box in fabric");
 		TransportClient transportClient = new TransportClient();
@@ -59,7 +59,6 @@ public class FabricServiceImpl implements FabricService {
 		boxMono
 	    .map(box1 -> conveyorBelt1.andThen(conveyorBelt2).andThen(conveyorBelt3).apply(box))
 	    .doOnNext(box1-> {
-	    	log.info("Sending box");
 		    transportClient.sendResult(request).subscribe(log::info);
 	    })
 	    .subscribe();
