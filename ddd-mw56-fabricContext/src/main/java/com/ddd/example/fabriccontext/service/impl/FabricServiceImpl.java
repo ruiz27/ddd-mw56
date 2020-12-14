@@ -52,7 +52,7 @@ public class FabricServiceImpl implements FabricService {
 	    .doOnNext(box1-> {
 	    	log.info("Sending box");
 			TransportClient transportClient = new TransportClient();
-		    log.info(transportClient.getResult());
+		    transportClient.getResult().subscribe(log::info);
 		    log.info("Box sended");
 	    })
 	    .subscribe();

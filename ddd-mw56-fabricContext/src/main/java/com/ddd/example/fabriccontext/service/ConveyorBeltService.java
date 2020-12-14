@@ -53,6 +53,7 @@ public class ConveyorBeltService implements UnaryOperator<Box> {
 				"██▓▓▓▓████──────────────██████\r\n" + 
 				"──████";
 		log.info(mario);
+//		t.setName(t.getName().concat(mario));
 		return t;
 	}
 }
