@@ -13,15 +13,18 @@ import reactor.test.StepVerifier;
 
 @RunWith(MockitoJUnitRunner.class)
 public class FabricServiceImplTest {
+	
+	
+	private FabricServiceImpl fac;
 
 	@Before
 	public void init() {
-
+		
 	}
 
 	@Test
 	public void when_registerProcess_correct() {
-		FabricServiceImpl fac = new FabricServiceImpl();
+		fac = new FabricServiceImpl();
 		Mono<Box> res = fac.processShipment("GIFT");
 		StepVerifier.create(res.log())
 		.expectNext(new Box())

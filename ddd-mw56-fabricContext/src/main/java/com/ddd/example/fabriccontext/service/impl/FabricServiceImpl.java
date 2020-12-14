@@ -52,13 +52,10 @@ public class FabricServiceImpl implements FabricService {
 	    .map(box1 -> conveyorBelt1.andThen(conveyorBelt2).andThen(conveyorBelt3).apply(box))
 	    .doOnNext(box1-> {
 	    	log.info("Sending box");
-			
 		    transportClient.getResult().subscribe(log::info);
 	    })
 	    .subscribe();
 	    
 	    return boxMono;
-	    
 	}
-
 }
