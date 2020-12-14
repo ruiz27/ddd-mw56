@@ -40,19 +40,23 @@ public class FabricServiceImpl implements FabricService {
 		log.info("Request received");
 		
 		log.info("Box created");
-		Box box = new Box();
-		box.setName(request);
+		Box box = new Box(1,request);
+		Mono<Box> boxMono = Mono.just(box);
 		
 		log.info("Box in fabric");
-		conveyorBelt1.andThen(conveyorBelt2).andThen(conveyorBelt3).apply(box);
-		
-		log.info("Sending box");
-		TransportClient transportClient = new TransportClient();
-	    log.info(transportClient.getResult());
-		
-	    log.info("Box sended");
-		
-	    return null;
+	    
+		boxMono
+	    .map(box1 -> conveyorBelt1.andThen(conveyorBelt2).andThen(conveyorBelt3).apply(box))
+	    .doOnNext(box1-> {
+	    	log.info("Sending box");
+			TransportClient transportClient = new TransportClient();
+		    log.info(transportClient.getResult());
+		    log.info("Box sended");
+	    })
+	    .subscribe();
+	    
+	    return boxMono;
+	    
 	}
 
 }

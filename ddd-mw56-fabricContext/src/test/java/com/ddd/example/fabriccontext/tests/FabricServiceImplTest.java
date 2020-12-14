@@ -22,3 +22,4 @@ public class FabricServiceImplTest {
 		fac.processShipment("GIFT");
 	}
 }
+	
