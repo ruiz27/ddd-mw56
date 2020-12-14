@@ -1,5 +1,6 @@
 package com.ddd.example.fabriccontext.service;
 
+import java.util.concurrent.TimeUnit;
 import java.util.function.UnaryOperator;
 
 import com.ddd.example.fabriccontext.model.Box;
@@ -25,7 +26,12 @@ public class ConveyorBeltService implements UnaryOperator<Box> {
 	 * Process box
 	 */
 	public Box apply(Box t) {	
-		
+		try {
+			TimeUnit.SECONDS.sleep(3);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		String mario = "\n"+"──────────────███████──███████\r\n" + 
 				"──────────████▓▓▓▓▓▓████░░░░░██        Procesed box " + t.getName() + " in belt " + belt + "\r\n" + 
 				"────────██▓▓▓▓▓▓▓▓▓▓▓▓██░░░░░░██\r\n" + 

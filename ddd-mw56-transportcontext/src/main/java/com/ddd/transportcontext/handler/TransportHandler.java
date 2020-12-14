@@ -1,5 +1,7 @@
 package com.ddd.transportcontext.handler;
 
+import java.time.Duration;
+
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.BodyInserters;
@@ -23,6 +25,8 @@ public class TransportHandler {
 	      		" |-'.----.  _____ |'-----''-----''-----''-----'.----.'-----'|.....\r\n" + 
 	      		"|=./ .--. \\|=====||___________________________/ .--. \\______] \r\n" + 
 	      		"'=' :(--): `-----''--------------------------' :(--): `-----'   \r\n" + 
-	      		".... `--' ..................................... `--' ..LGB........"));
+	      		".... `--' ..................................... `--' ..LGB........"))
+	      .delayElement(Duration.ofSeconds(2))
+	      ;
 	  }
 }

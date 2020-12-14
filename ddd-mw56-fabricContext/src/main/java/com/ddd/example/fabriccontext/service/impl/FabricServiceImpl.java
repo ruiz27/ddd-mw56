@@ -40,20 +40,20 @@ public class FabricServiceImpl implements FabricService {
 	 */
 	public Mono<Box> processShipment(String request) {
 		
-		log.info("Request received " + request);
-		log.info("Box created");
+		log.info("\n Request received " + request);
+		log.info("\n Box created");
 		Box box = new Box(1,request);
 		Mono<Box> boxMono = Mono.just(box);
 		
 		log.info("Box in fabric");
-	    
+		TransportClient transportClient = new TransportClient();
+		
 		boxMono
 	    .map(box1 -> conveyorBelt1.andThen(conveyorBelt2).andThen(conveyorBelt3).apply(box))
 	    .doOnNext(box1-> {
 	    	log.info("Sending box");
-			TransportClient transportClient = new TransportClient();
+			
 		    transportClient.getResult().subscribe(log::info);
-		    log.info("Box sended");
 	    })
 	    .subscribe();
 	    
