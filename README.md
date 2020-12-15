@@ -23,3 +23,9 @@ Its a representation of the game with the comunications between two microservice
 - Multi-Module Project
 - Java reactive webflux
 - Webclient
+
+### HOW TO USE
+
+- Build/Deploy FabricContext project 
+- Build/Deploy TransportContect project
+- curl --location --request POST 'http://localhost:8080/fabric/startProcess' \ --header 'Content-Type: text/plain' \ --header 'Cookie: JSESSIONID=3CAE8C1310EAC3D55CDE591BA07B9A23' \ --data-raw 'SERGIO'
