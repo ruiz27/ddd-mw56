@@ -6,9 +6,19 @@ import org.springframework.web.reactive.function.client.WebClient;
 import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Mono;
 
+/**
+ * 
+ * @author sergio.ruiz
+ *
+ */
 @Slf4j
 public class TransportClient {
 
+	/**
+	 * call /send transport service
+	 * @param present
+	 * @return
+	 */
 	public Mono<String> sendResult(String present) {
 		log.info("Sending box");
 		return WebClient.create("http://localhost:8082")
