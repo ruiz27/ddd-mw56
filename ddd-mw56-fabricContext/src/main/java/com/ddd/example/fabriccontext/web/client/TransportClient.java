@@ -28,5 +28,20 @@ public class TransportClient {
 				.accept(MediaType.TEXT_PLAIN).retrieve()
 				.bodyToMono(String.class);
 	}
+	
+	
+	/**
+	 * call /send transport service
+	 * @param present
+	 * @return
+	 */
+	public Mono<String> sendBelt(String present) {
+		return WebClient.create("http://localhost:8082")
+				.post()
+				.uri("/belt")
+				.bodyValue(present)
+				.accept(MediaType.TEXT_PLAIN).retrieve()
+				.bodyToMono(String.class);
+	}
 
 }

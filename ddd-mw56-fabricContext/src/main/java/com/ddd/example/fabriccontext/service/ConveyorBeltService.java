@@ -4,6 +4,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.function.UnaryOperator;
 
 import com.ddd.example.fabriccontext.model.Box;
+import com.ddd.example.fabriccontext.web.client.TransportClient;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -29,9 +30,9 @@ public class ConveyorBeltService implements UnaryOperator<Box> {
 		try {
 			TimeUnit.SECONDS.sleep(3);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			log.error("",e);
 		}
+		
 		String mario = "\n"+"──────────────███████──███████\r\n" + 
 				"──────────████▓▓▓▓▓▓████░░░░░██        Procesed box " + t.getName() + " in belt " + belt + "\r\n" + 
 				"────────██▓▓▓▓▓▓▓▓▓▓▓▓██░░░░░░██\r\n" + 
@@ -59,7 +60,10 @@ public class ConveyorBeltService implements UnaryOperator<Box> {
 				"██▓▓▓▓████──────────────██████\r\n" + 
 				"──████";
 		log.info(mario);
-//		t.setName(t.getName().concat(mario));
+		
+		TransportClient transportClient = new TransportClient();
+		transportClient.sendBelt(t.getName()).subscribe(log::info);
+		 
 		return t;
 	}
 }
