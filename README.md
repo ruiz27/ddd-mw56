@@ -3,6 +3,9 @@ Test case for game MW56 with DDD
 
 Its a representation of the game with the comunications between two microservices 
 
+![alt text](http://seanriddle.com/gnw_mw56_left.svg)
+
+
 ## Map Context
 
 - Fabric context: The sample library that we're creating the starter for.
