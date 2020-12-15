@@ -23,6 +23,8 @@ Its a representation of the game with the comunications between two microservice
 - Multi-Module Project
 - Java reactive webflux
 - Webclient
+- Spring data JBDC
+- Liquibase
 
 ### HOW TO USE
 
