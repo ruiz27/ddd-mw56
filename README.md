@@ -29,8 +29,16 @@ Its a representation of the game with the comunications between two microservice
 - Spring data JBDC
 - Liquibase
 
+### HOW TO DEPLOY
+
+- docker build --tag fabric-context .
+- docker run --publish 8000:8080 --detach --name bb fabric-context
+
+- docker build --tag transport-context .
+- docker run --publish 8000:8082 --detach --name cc transport-context
+
 ### HOW TO USE
 
-- Build/Deploy FabricContext project 
-- Build/Deploy TransportContect project
+- Start FabricContext project 
+- Start TransportContect project
 - curl --location --request POST 'http://localhost:8080/fabric/startProcess' \ --header 'Content-Type: text/plain' \ --header 'Cookie: JSESSIONID=3CAE8C1310EAC3D55CDE591BA07B9A23' \ --data-raw 'SERGIO'
