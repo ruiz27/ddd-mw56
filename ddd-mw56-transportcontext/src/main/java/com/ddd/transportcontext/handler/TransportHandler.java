@@ -20,7 +20,7 @@ public class TransportHandler {
 		final Mono<String> present = request.bodyToMono(String.class);
 		return present.flatMap( msg -> {
 			
-			String luigi = "░░░░░░░░░▄▄▄▄░░░░░░░\r\n" + 
+			String luigi = "\n"+"░░░░░░░░░▄▄▄▄░░░░░░░\r\n" + 
 					"░░░░░░▄▀▀░░░░█░░░░░░░░░░░░░\r\n" + 
 					"░░░░▄▀░░▄▄██████▄░░░░░░░░░░\r\n" + 
 					"░░░▄█▄▄█▀░░▄░░█▀▀░░░░░░░░░░\r\n" + 
